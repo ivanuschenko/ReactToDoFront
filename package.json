@@ -1,40 +1,35 @@
 {
-  "name": "react2",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "@testing-library/jest-dom": "^5.16.3",
-    "@testing-library/react": "^12.1.4",
-    "@testing-library/user-event": "^13.5.0",
-    "axios": "^0.26.1",
-    "node-sass": "^7.0.1",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-scripts": "5.0.0",
-    "web-vitals": "^2.1.4"
-  },
+  "name": "nodejsproject",
+  "version": "1.0.0",
+  "description": "For start project need run commands: * npm install * npm start",
+  "main": "app.js",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon node app.js"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.2",
+    "cors": "^2.8.5",
+    "express": "^4.17.3",
+    "mongodb": "^4.4.1",
+    "mongoose": "^6.2.6",
+    "nodemon": "^2.0.7"
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
+  "nodemonConfig": {
+    "ignore": [
+      "test/*",
+      "docs/*"
     ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  }
+    "delay": "2500"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/usatovaDasha/nodeJsProjectShareToDo.git"
+  },
+  "bugs": {
+    "url": "https://github.com/usatovaDasha/nodeJsProjectShareToDo/issues"
+  },
+  "homepage": "https://github.com/usatovaDasha/nodeJsProjectShareToDo#readme"
 }
