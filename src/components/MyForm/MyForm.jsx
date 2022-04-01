@@ -1,80 +1,81 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import './MyForm.scss';
 import Delete from '../../img/delete.png';
 import Edit from '../../img/edit.png';
 import Cancel from '../../img/decline.png';
 import Accept from '../../img/okey.png';
 import DeleteAll from '../../img/delete_all.png';
+const url = 'http://localhost:8000'
 
 const MyForm = () => {
-  const [tasks, showTasks] = useState([]);
+  const [tasks, setTasks] = useState([]);
   const [text, setTask] = useState('');
-  const [form, changeForm] = useState(false);
+  const [form, setForm] = useState(false);
   const [taskIndex, setIndex] = useState('');
   const [inputValue, setInputValue] = useState('');
 
   useEffect(async () => {
-    await axios.get('http://localhost:8000/allTasks').then(res => {
-      showTasks(res.data);
+    await axios.get(`${url}/allTasks`).then(res => {
+      setTasks(res.data);
     });
   }, []);
 
   const addNewTask = async (e) => {
     e.preventDefault();
-    await axios.post('http://localhost:8000/createTask', {
+    await axios.post(`${url}/createTask`, {
       text,
       isCheck: false
     }).then(res => {
       setTask('');
       const newTask = [...tasks];
       newTask.push(res.data);
-      showTasks(newTask);
-    })
-  }
+      setTasks(newTask);
+    });
+  };
 
   const changeComponent = (temp) => {
-    changeForm(true);
+    setForm(true);
     setIndex(temp);
   }
 
   const editImg = async (id) => {
-    await axios.patch('http://localhost:8000/updateTask', {
+    await axios.patch(`${url}/updateTask`, {
       _id: id,
       text: inputValue,
     }).then(res => {
-      showTasks(res.data);
+      setTasks(res.data);
     });
   };
 
   const changeStyle = async (key, isCheck, id) => {
     !isCheck ? isCheck = true : isCheck = false;
-    await axios.patch('http://localhost:8000/updateTask', {
+    await axios.patch(`${url}/updateTask`, {
       _id: id,
       isCheck: isCheck
     }).then(res => {
-      changeForm(false);
-      showTasks(res.data);
+      setForm(false);
+      setTasks(res.data);
     });
   };
 
   const deleteTask = async (id) => {
-    await axios.delete(`http://localhost:8000/deleteTask?_id=${id}`, {
+    await axios.delete(`${url}/deleteTask?_id=${id}`, {
       _id: id
     }).then(res => {
-      showTasks(res.data);
+      setTasks(res.data);
     });
   };
 
   const deleteAllTask = async() => {    
-    await axios.delete(`http://localhost:8000/deleteAll`,).then(res => {
-      showTasks([])
+    await axios.delete(`${url}/deleteAll`,).then(res => {
+      setTasks([]);
     });
   };
 
   const cancelEdit = () => {
-    changeForm(false);
-    showTasks(tasks);
+    setForm(false);
+    setTasks(tasks);
   };
 
   return (
@@ -106,7 +107,6 @@ const MyForm = () => {
               return (a.isCheck > b.isCheck ? 1 : -1);
             })
             .map((task, index) =>
-
               <div className="task" key={`task-${index}`}>
                 {form &&
                   taskIndex === `task-${index}` ?
