@@ -1,0 +1,80 @@
+body {
+  background-color: blueviolet;  
+}
+
+.inputForm {
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;  
+}
+
+body {
+  margin: 0 auto;
+  max-width: 87.5rem;
+  text-align: center;
+}
+
+.allTasks {
+  max-width: 100%;
+  margin: 0 auto;
+  text-align: center;  
+}
+
+.myBtn {
+  padding: 0.65rem 1.5rem;  
+  color: black;
+  font-size: 0.9rem;
+  background: transparent;
+  border: solid 0.15rem yellow;
+  background-color: yellowgreen;
+  border-radius: 0.3rem;
+}
+
+.myInput {
+  width: 40%;
+  height: 2rem;  
+  padding: 0.4rem 2rem;
+  margin-right: 1rem;
+  border:  0.13rem solid black;
+  border-radius: 0.2rem;
+  font-size: 2rem;
+}
+
+.allTasks {
+  margin: 0 auto;
+}
+
+.task {  
+  width: 80%;
+  padding: 0.2rem 1.5rem;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border: solid 2px yellow;
+  background-color: yellowgreen;
+  border-radius: 0.33rem;
+}
+
+.img {
+  width: 0.9rem;
+  height: 0.9rem;
+}
+
+.TaskList {
+  margin-top: 2rem;
+  display :grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 0.6rem;
+}
+
+.doneTask {
+  color: gray;
+  text-decoration: line-through;
+}
+
+.deleteAll {
+  height: 2.2rem;
+  width: 2.2rem;
+  margin-right: 1rem;
+}
